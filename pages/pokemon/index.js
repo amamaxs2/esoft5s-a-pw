@@ -1,5 +1,5 @@
 var array = [];
-let current = 0;
+let atual = 0;
 
 function changePageTitle(title) {
   document.title = title
@@ -8,9 +8,7 @@ function changePageTitle(title) {
 function generateInfoSection(src, pokemonName) {
   const h2 = document.createElement('h2')
   h2.id = "info-pokemon-label"
-  if (pokemonName) {
-    h2.textContent = `Informações sobre ${pokemonName}`
-  }
+  h2.textContent = `Informações sobre ${pokemonName}`
 
   const img = document.querySelector('img')
   img.src = src
@@ -24,9 +22,9 @@ function generateInfoSection(src, pokemonName) {
 
 async function getPokemonData(name) {
   try {
-    const currentDate = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
 
-    const jsonData = await currentDate.json()
+    const jsonData = await data.json()
 
     array = Object.values(jsonData.sprites).filter((word) => typeof word == "string")
 
@@ -57,6 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const img = document.querySelector('img');
 img.addEventListener('click', () => {
-  current = (current + 1) % array.length;
-  img.src = array[current];
+  atual = (atual + 1) % array.length;
+  img.src = array[atual];
 });
