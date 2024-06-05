@@ -47,7 +47,7 @@ async function getPokemonData(name) {
   }
 }
 
-function getSearchParams() {
+function getSearchParams() { 
   // Early return -> Caso location search, não faz nada.
   if (!location.search) {
     return
